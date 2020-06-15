@@ -19,12 +19,13 @@ public class ChangeNumServlet extends HttpServlet{
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		//1.获取请求参数
-		String id = request.getParameter("id");
+		String idstr = request.getParameter("id");
+		int id = Integer.parseInt(idstr);
 		String num = request.getParameter("num");
 		
-		if(id == null && num == null){
+	/*	if(id == null && num == null){
 			response.getWriter().write("非法访问");return;
-		}
+		}*/
 		
 		//2.只需要封装个对象，设置个ID即可
 		ProductService ps = new ProductService();

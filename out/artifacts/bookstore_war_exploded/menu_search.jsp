@@ -4,7 +4,6 @@
 	
 </script>
 <script type="text/javascript">
-<!--
 	function fillNameValue(subDiv) {
 		document.getElementById("name").value = subDiv.innerHTML;
 		
@@ -95,8 +94,8 @@
 		<table width="100%" border="0" cellspacing="0">
 			<tr>
 				<td style="text-align:right; padding-right:220px">
-				Search <input
-					type="text" name="name" class="inputtable" onkeyup="searchName();"
+				 <input
+					type="text" name="name" placeholder="请输入书名关键字" class="inputtable" onkeyup="searchName();"
 					id="name" /> 
 					<input type="image" src="images/serchbutton.gif"
 					border="0" style="margin-bottom:-4px">

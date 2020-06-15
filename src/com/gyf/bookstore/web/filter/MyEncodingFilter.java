@@ -11,9 +11,10 @@ import javax.servlet.FilterConfig;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
+import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletRequestWrapper;
-
+//@WebFilter("/*")
 public class MyEncodingFilter implements Filter{
 	//有无Override没影响
 	public void destroy() {}
@@ -22,6 +23,7 @@ public class MyEncodingFilter implements Filter{
 	@Override
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
 			throws IOException, ServletException {
+		request.setCharacterEncoding("utf-8");
 		//1.类型转换
 		HttpServletRequest hsr = (HttpServletRequest) request;
 		

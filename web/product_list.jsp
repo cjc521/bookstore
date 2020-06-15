@@ -42,12 +42,11 @@
 											<td>
 												<div class="divbookpic">
 													<p>
-														<%--<a href="${pageContext.request.contextPath }/productInfo?id=${book.id}"><img src="bookcover/101.jpg" width="115"
-															height="129" border="0" /> </a>--%>
+                                                        <a href="${pageContext.request.contextPath }/productInfo?id=${book.id}&&category=${category}">
+															<img src="${book.imgurl}" width="115"  height="129" border="0" />
+                                                        </a>
 													</p>
-													<a href="${pageContext.request.contextPath }/productInfo?id=${book.id}"><img src="${book.imgurl}" width="115"
-																																 height="129" border="0" />
-														</a>
+
 												</div>
 												<div class="divlisttitle">
 													<a href="${pageContext.request.contextPath }/productInfo?id=${book.id}">书名:${book.name}<br />售价:${book.price} </a>
@@ -71,25 +70,19 @@
 										<c:if test="${pr.currentPage < pr.totalPage}">
 											<li><a href="${pageContext.request.contextPath}/showProductByPage?category=${category}&page=${pr.currentPage+1}">下一页</a></li>
 										</c:if>
-										
-										<%-- <c:choose>
+										 <c:choose>
 											<c:when test="${pr.totalPage <= 4}">
 												<c:forEach var="i" begin="1" end="${pr.totalPage}">
-													<li><a href="#">${i}</a></li>
+													<li><a href="${pageContext.request.contextPath}/showProductByPage?category=${category}&page=${i}">${i}</a></li>
 												</c:forEach>
 											</c:when>
 											<c:otherwise>
 												<c:forEach var="i" begin="${pr.currentPage}" end="${pr.currentPage + 3}">
-														<li><a href="#">${i}</a></li>
+														<li><a href="${pageContext.request.contextPath}/showProductByPage?category=${category}&page=${i}">${i}</a></li>
 												</c:forEach>
 											</c:otherwise>
-										</c:choose> --%>
-										
-										
-										
-										
+										</c:choose>
 									</ul>
-									
 								</div>
 							</td>
 						</tr>
@@ -97,11 +90,7 @@
 			</tr>
 		</table>
 	</div>
-
-
-
+<%--   尾部--%>
 	<jsp:include page="foot.jsp" />
-
-
 </body>
 </html>

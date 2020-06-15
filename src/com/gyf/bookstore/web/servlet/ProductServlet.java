@@ -22,7 +22,7 @@ import java.util.Map;
 
 @WebServlet("/product/*")
 public class ProductServlet extends Base {
-
+     //添加图书
     protected void addProduct(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException, FileUploadException {
 
         Product product = new Product();
@@ -64,12 +64,28 @@ public class ProductServlet extends Base {
         ProductService service = new ProductService();
         int count = service.addProduct(product);
         if(count==1){//成功
-            req.setAttribute("msg","添加成功");
-            req.getRequestDispatcher("/admin/login/home.jsp").forward(req,resp);
+//            req.setAttribute("msg","添加成功");
+//            req.getRequestDispatcher("/admin/login/home.jsp").forward(req,resp);
+            resp.getWriter().write("图书添加成功");
         }else{
             req.setAttribute("msg","添加失败");
             req.getRequestDispatcher("/admin/login/home.jsp").forward(req,resp);
         }
 
+    }
+
+    protected void productInfo(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        String idstr = req.getParameter("id");
+        int id = Integer.parseInt(idstr);
+        ProductService ps = new ProductService();
+        Product book = ps.findBookById(id);
+
+        if(book != null){
+            req.setAttribute("book", book);
+            req.getRequestDispatcher("/product_info.jsp").forward(req, resp);
+        }else {
+            req.setAttribute("msg", "错误");
+            req.getRequestDispatcher("/product_info.jsp").forward(req, resp);
+        }
     }
 }

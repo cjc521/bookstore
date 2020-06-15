@@ -17,15 +17,19 @@ public class ProductInfoServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) 
 			throws ServletException, IOException {
-
-		String id = request.getParameter("id");
+		String idstr = request.getParameter("id");
+		int id = Integer.parseInt(idstr);
 		ProductService ps = new ProductService();
 		Product book = ps.findBookById(id);
 		
 		if(book != null){
 			request.setAttribute("book", book);
+			request.getRequestDispatcher("/product_info.jsp").forward(request, response);
+		}else {
+			request.setAttribute("msg", "错误");
+			request.getRequestDispatcher("/product_info.jsp").forward(request, response);
 		}
-		
-		request.getRequestDispatcher("/product_info.jsp").forward(request, response);
+
+
 	}
 }

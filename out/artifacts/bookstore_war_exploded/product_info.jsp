@@ -1,5 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
@@ -18,16 +18,10 @@
 	<div id="divpagecontent">
 		<table width="100%" border="0" cellspacing="0">
 			<tr>
-
-				<td><div style="text-align:right; margin:5px 10px 5px 0px">
+				<td><div style="text-align:right; margin:5px 10px 5px 0px"><span>${msg}</span>
 						<a href="index.html">首页</a>&nbsp;&nbsp;&nbsp;&nbsp;&gt;&nbsp;&nbsp;&nbsp;<a
-							href="product_list.html">&nbsp;计算机</a>&nbsp;&nbsp;&nbsp;&nbsp;&gt;&nbsp;&nbsp;&nbsp;&nbsp;Thinking In Java
+							href="product_list.html">&nbsp;${book.category}</a>&nbsp;&nbsp;&nbsp;&nbsp;&gt;&nbsp;&nbsp;&nbsp;&nbsp;${book.name}
 					</div>
-
-
-
-
-
 					<table cellspacing="0" class="infocontent">
 						<tr>
 							<td><img src="ad/page_ad.jpg" width="645" height="84" />
@@ -38,7 +32,7 @@
 
 											<div class="divbookcover">
 												<p>
-													<img src="bookcover/101.jpg"
+													<img src="${book.imgurl}"
 														width="213" height="269" border="0" />
 												</p>
 											</div>
