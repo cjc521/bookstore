@@ -21,33 +21,26 @@ public class ChangeNumServlet extends HttpServlet{
 		//1.获取请求参数
 		String idstr = request.getParameter("id");
 		int id = Integer.parseInt(idstr);
-		String num = request.getParameter("num");
-		
-	/*	if(id == null && num == null){
-			response.getWriter().write("非法访问");return;
-		}*/
-		
+		String numstr = request.getParameter("num");
+		int num = Integer.parseInt(numstr);
 		//2.只需要封装个对象，设置个ID即可
 		ProductService ps = new ProductService();
 		Product book = ps.findBookById(id);
 		if(book == null){
 			response.getWriter().write("非法访问");return;
 		}
-		
-		@SuppressWarnings("unchecked")
-		Map<Product,Integer> cart = (Map<Product, Integer>) request.getSession().getAttribute("cart"); 
+		Map<Product,Integer> cart = (Map<Product, Integer>) request.getSession().getAttribute("cart");
 		if(cart == null){
 			response.getWriter().write("非法访问");return;
 		}
 		
-		if(num.equals("0")){
+		if(num==0){
 			cart.remove(book);//把这个产品从session中移除
 		}else{
 			if(cart.containsKey(book)){//更改数量
-				cart.put(book, Integer.parseInt(num));
+				cart.put(book, num);
 			}
 		}
-		
 		request.setAttribute("cart", cart);
 		request.getRequestDispatcher("cart.jsp").forward(request, response);
 	}

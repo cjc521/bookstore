@@ -20,8 +20,14 @@ public class ProductDao{
 	//查询类别的总记录数
 	public long count(String category) throws SQLException{
 		QueryRunner qr = new QueryRunner(C3P0Utils.getDataSource());
-		String sql = "select count(id) from products where category = ?";
-		long  count = (long) qr.query(sql, new ScalarHandler(1),category);
+		String sql = "select count(id) from products where 1=1 ";
+		List<Object> prmts = new ArrayList<>();
+		//条件
+		if(category!=null && !"".equals(category)){
+			sql += " and category = ?";
+			prmts.add(category);
+		}
+		long  count = (long) qr.query(sql, new ScalarHandler(1),prmts.toArray());
 		return count;
 	}
 	//模糊查询name的记录数
@@ -71,13 +77,6 @@ public class ProductDao{
 		String sql = "select * from products where id = ?";
 		return qr.query(sql, new BeanHandler<Product>(Product.class),id);
 	}
-	public void updateProductNum(int id, int buynum) throws SQLException {
-		// TODO Auto-generated method stub
-
-		String sql = "update products set pnum = pnum - ? where id = ?";
-		QueryRunner qr = new QueryRunner();
-		qr.update(ManagerThreadLocal.getConnection(), sql,buynum,id);
-	}
 	//添加图书
 	public int addProduct(Product product) throws SQLException {
 		// TODO Auto-generated method stub
@@ -90,4 +89,12 @@ public class ProductDao{
 				product.getImgurl(), product.getDescription());
 		return count;
 	}
+	//修改图书库存
+	public int updateProductNum(int id, int buynum) throws SQLException {
+		// TODO Auto-generated method stub
+		String sql = "update products set pnum = pnum - ? where id = ?";
+		QueryRunner qr = new QueryRunner();
+		return qr.update(ManagerThreadLocal.getConnection(), sql,buynum,id);
+	}
+
 }

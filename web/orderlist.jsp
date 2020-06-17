@@ -29,12 +29,12 @@
 
 						<tr>
 							<td class="listtd"><img src="images/miniicon.gif" width="9"
-								height="6" />&nbsp;&nbsp;&nbsp;&nbsp; <a href="orderlist.jsp">订单查询</a>
+								height="6" />&nbsp;&nbsp;&nbsp;&nbsp; <a href="${pageContext.request.contextPath}/findOrderByUserId?id=${user.id}">订单查询</a>
 							</td>
 						</tr>
 						<tr>
 							<td class="listtd"><img src="images/miniicon.gif" width="9"
-								height="6" />&nbsp;&nbsp;&nbsp;&nbsp; <a href="#">用戶退出</a></td>
+								height="6" />&nbsp;&nbsp;&nbsp;&nbsp; <a href="${pageContext.request.contextPath }/user?action=logout">用戶退出</a></td>
 						</tr>
 
 
@@ -44,10 +44,6 @@
 						<a href="index.jsp">首页</a>&nbsp;&nbsp;&nbsp;&nbsp;&gt;&nbsp;&nbsp;&nbsp;<a
 							href="myAccount.jsp">&nbsp;我的帐户</a>&nbsp;&nbsp;&nbsp;&nbsp;&gt;&nbsp;&nbsp;&nbsp;&nbsp;订单查询
 					</div>
-
-
-
-
 
 					<table cellspacing="0" class="infocontent">
 						<tr>
@@ -72,8 +68,8 @@
 												<fmt:formatDate value="${order.ordertime}" pattern="yyyy-MM-dd HH:mm:ss"/>
 											</td>
 											<td class="tableopentd02">${order.paystate==0? '未支付' : '已支付'}</td>
-											<td class="tableopentd03"><a href="${pageContext.request.contextPath}/findOrderItemsByOrderId?orderid=${order.id}">查看</a>&nbsp;&nbsp;
-												<a href="#">刪除</a>
+											<td class="tableopentd03"><a href="${pageContext.request.contextPath}/findOrderById?orderId=${order.id}">查看</a>&nbsp;&nbsp;
+												<a href="${pageContext.request.contextPath}/deleteOrderById?orderId=${order.id}">刪除</a>
 											</td>
 										</tr>
 									</c:forEach>

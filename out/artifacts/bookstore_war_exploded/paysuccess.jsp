@@ -17,16 +17,13 @@
 
 	<jsp:include page="head.jsp"></jsp:include>
 	<jsp:include page="menu_search.jsp" />
-
-
-
 	<div id="divcontent">
 		<table width="850px" border="0" cellspacing="0">
 			<tr>
 				<td style="padding:30px; text-align:center"><table width="60%"
 						border="0" cellspacing="0" style="margin-top:70px">
 						<tr>
-							<td style="width:98"><img
+							<td style="width:98px"><img
 								src="images/IconTexto_WebDev_009.jpg" width="128" height="128" />
 							</td>
 							<td style="padding-top:30px"><font
@@ -38,11 +35,7 @@
 			</tr>
 		</table>
 	</div>
-
-
-
 	<jsp:include page="foot.jsp"/>
-
 
 </body>
 </html>

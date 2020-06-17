@@ -15,18 +15,22 @@ import com.gyf.bookstore.service.OrderService;
 public class FindOrderItemsByOrderIdServlet extends HttpServlet{
 
 	@Override
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) 
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
 		//获取请求参数
-		String orderid = request.getParameter("orderid");
-		
+		String orderId = req.getParameter("orderId");
 		//查询定单
 		OrderService os = new OrderService();
-		Order order = os.findOrderByOrderId(orderid);
-		
+		Order order = os.findOrderByOrderId(orderId);
+		if(order==null){
+			resp.getWriter().write("该订单异常，请重试！！！");
+		}
 		//存数据到request
-		request.setAttribute("order", order);
-		request.getRequestDispatcher("/orderInfo.jsp").forward(request, response);
-		//System.out.println(orderid);
+		req.setAttribute("order", order);
+		req.getRequestDispatcher("/orderInfo.jsp").forward(req, resp);
+	}
+	@Override
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		this.doPost(req, resp);
 	}
 }

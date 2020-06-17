@@ -14,7 +14,7 @@ import javax.servlet.ServletResponse;
 import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletRequestWrapper;
-//@WebFilter("/*")
+@WebFilter("/*")
 public class MyEncodingFilter implements Filter{
 	//有无Override没影响
 	public void destroy() {}
@@ -25,7 +25,7 @@ public class MyEncodingFilter implements Filter{
 			throws IOException, ServletException {
 		request.setCharacterEncoding("utf-8");
 		//1.类型转换
-		HttpServletRequest hsr = (HttpServletRequest) request;
+//		HttpServletRequest hsr = (HttpServletRequest) request;
 		
 		//2.更改request
 
@@ -33,7 +33,7 @@ public class MyEncodingFilter implements Filter{
 		response.setContentType("text/html;charset=utf-8");
 		
 		//3.放行
-		chain.doFilter(hsr, response);
+		chain.doFilter(request, response);
 	}
 }
 

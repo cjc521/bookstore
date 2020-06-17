@@ -1,15 +1,27 @@
-<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8" isELIgnored="false" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
 <head>
 <title>电子书城</title>
 <link rel="stylesheet" href="css/main.css" type="text/css" />
-
 <script type="text/javascript">
 	function submitOrder(){
-		//通过js提交表单
+		//前端验证
+	/*	var  flag=false;
+		var  address= document.getElementById("receiverAddress");
+		var  name= document.getElementById("receiverName");
+		var  phone= document.getElementById("receiverPhone");
+		if(address.innerText!=null&&name.innerText!=null&&phone.innerText!=null){
+			flag=true;
+		}*/
 		document.getElementById('orderForm').submit();
+		//通过js提交表单
+	/*	if(flag==true){
+		   document.getElementById('orderForm').submit();
+		}else{
+			alert("收货人信息不全，请完善收货信息");
+		}*/
 	}
 </script>
 </head>
@@ -31,33 +43,32 @@
 								<td><table width="100%" border="0" cellspacing="0">
 										<tr>
 											<td><img src="images/buy2.gif" width="635" height="38" />
-												<p>您好：xxx先生！欢迎您来到商城结算中心</p></td>
+												<p>您好：${user.username}先生！欢迎您来到商城结算中心</p></td>
 										</tr>
 										<tr>
 											<td><table cellspacing="1" class="carttable">
 													<tr>
 														<td width="10%">序号</td>
-														<td width="40%">商品名称</td>
+														<td width="20%">商品名称</td>
 														<td width="10%">价格</td>
 														<td width="10%">类别</td>
 														<td width="10%">数量</td>
 														<td width="10%">小计</td>
-
 													</tr>
 												</table>
 												<c:set var="totalPrice" value="0"></c:set>
 												<table width="100%" border="0" cellspacing="0">
-													<c:forEach items="${cart}" var="entry" varStatus="vs">
+													<c:forEach items="${cart}" var="cart" varStatus="vs">
 													
 														<tr>
 															<td width="10%">${vs.count}</td>
-															<td width="40%">${entry.key.name}</td>
-															<td width="10%">${entry.key.price}</td>
-															<td width="10%">${entry.key.category}</td>
+															<td width="20%">${cart.key.name}</td>
+															<td width="10%">${cart.key.price}</td>
+															<td width="10%">${cart.key.category}</td>
 															<td width="10%"><input name="text" type="text"
-																value="${entry.value}" style="width:20px" readonly="readonly" /></td>
-															<td width="10%">${entry.value * entry.key.price}</td>
-															<c:set var="totalPrice" value="${totalPrice + entry.key.price * entry.value}"></c:set>
+																value="${cart.value}" style="width:20px" readonly="readonly" /></td>
+															<td width="10%">${cart.value * cart.key.price}</td>
+															<c:set var="totalPrice" value="${totalPrice + cart.key.price * cart.value}"></c:set>
 														</tr>
 													
 													</c:forEach>
@@ -70,7 +81,7 @@
 												</table>
 
 												<p>
-													收货地址：<input name="receiverAddress" type="text" value=""
+													收货地址：<input id="receiverAddress" name="receiverAddress" type="text" value=""
 														style="width:350px" />&nbsp;&nbsp;&nbsp;&nbsp;<a href="#"></a>
 													<br /> 收货人：&nbsp;&nbsp;&nbsp;&nbsp;<input
 														name="receiverName" type="text" value=""
@@ -92,10 +103,6 @@
 			</tr>
 		</table>
 	</div>
-
-
 	<jsp:include page="foot.jsp" />
-
-
 </body>
 </html>

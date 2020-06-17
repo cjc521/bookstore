@@ -85,8 +85,7 @@
 		href="${pageContext.request.contextPath}/showProductByPage?category=考试">考试</a>
 	<a
 		href="${pageContext.request.contextPath}/showProductByPage?category=生活百科">生活百科</a>
-	<a href="${pageContext.request.contextPath}/showProductByPage"
-		style="color:#FFFF00">全部商品目录</a>
+	<a href="${pageContext.request.contextPath}/showProductByPage" style="color:#FFFF00">全部商品目录</a>
 </div>
 <div id="divsearch">
 	<form action="${pageContext.request.contextPath}/findProductBySearch"

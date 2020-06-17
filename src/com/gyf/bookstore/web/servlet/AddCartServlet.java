@@ -23,16 +23,14 @@ public class AddCartServlet extends HttpServlet{
 		int id = Integer.parseInt(idstr);
 		ProductService ps = new ProductService();
 		Product book = ps.findBookById(id);
-		
+		request.setCharacterEncoding("utf-8");
 		//2.从session中获取购物车信息
-		@SuppressWarnings("unchecked")
 		Map<Product,Integer> cart = (Map<Product, Integer>) request.getSession().getAttribute("cart");
 		
-		//3.如果是空，创建一个购物边集合
+		//3.如果是空，创建一个购物车集合
 		if(cart == null){
 			cart = new HashMap<Product,Integer>();
 		}
-		
 		//4.判断购物车中是否有当前书的记录
 		if(cart.containsKey(book)){
 			cart.put(book, cart.get(book) + 1);

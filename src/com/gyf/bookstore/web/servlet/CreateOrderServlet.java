@@ -27,28 +27,24 @@ public class CreateOrderServlet extends HttpServlet{
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		System.out.println(request.getParameter("receiverAddress"));
-		System.out.println(request.getParameter("receiverName"));
-		System.out.println(request.getParameter("receiverPhone"));
+		String receiverAddress = request.getParameter("receiverAddress");
+		String receiverName = request.getParameter("receiverName");
+		String receiverPhone = request.getParameter("receiverPhone");
 		Order order = new Order();
 		
 		//获取当前登录用户的信息
 		User user = (User) request.getSession().getAttribute("user");
-		
 		try {
 			//1.把请求通过封闭到Order中
 			BeanUtils.populate(order, request.getParameterMap());
-			
 			//2.设置用户
 			order.setUser(user);
-			
 			//3.设置ID
 			order.setId(UUID.randomUUID().toString());
-			
+			System.out.println(UUID.randomUUID());
 			//4.设置定单详情
-			@SuppressWarnings("unchecked")
+			double totalPrice=0;
 			Map<Product,Integer> cart = (Map<Product, Integer>) request.getSession().getAttribute("cart");
-			
 			List<OrderItem> orderItems = new ArrayList<OrderItem>();
 			for(Entry<Product,Integer> entry : cart.entrySet()){
 				OrderItem oi = new OrderItem();
@@ -56,17 +52,18 @@ public class CreateOrderServlet extends HttpServlet{
 				oi.setP(entry.getKey());
 				oi.setOrder(order);
 				orderItems.add(oi);
+				totalPrice+= entry.getKey().getPrice() * entry.getValue();
 			}
 			order.setOrderItems(orderItems);
-			
-			//5.设置定单时间
+			//5.设置定单时间和金额
 			order.setOrdertime(new Date());
-			
+			order.setMoney(totalPrice);
 			//6.订单保存
 			OrderService os = new OrderService();
 			os.addOrder(order);
 			//7.进入支付页面
-			request.getRequestDispatcher("/pay.jsp").forward(request, response);
+			request.getSession().setAttribute("order",order);
+			response.sendRedirect(request.getContextPath()+"/pay.jsp");
 		} catch (Exception e) {
 			e.printStackTrace();
 		} 

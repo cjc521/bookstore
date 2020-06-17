@@ -18,6 +18,7 @@ import com.gyf.bookstore.utils.ManagerThreadLocal;
 
 public class OrderDao {
 
+	//保存订单
 	public void saveOrder(Order order)throws SQLException {
 		
 		QueryRunner qr = new QueryRunner();
@@ -33,28 +34,25 @@ public class OrderDao {
 		prmts.add(order.getPaystate());
 		prmts.add(order.getOrdertime());
 		prmts.add(order.getUser().getId());
-		
 		qr.update(ManagerThreadLocal.getConnection(), sql,prmts.toArray());
 		
 	}
-
-	/**
-	 * 根据用户id查找定单
-	 * @param userid
-	 * @return
-	 * @throws SQLException
-	 */
-	public List<Order> findOrdersByUserId(String userid) throws SQLException {
+    //修改订单状态为已支付
+	public void updateState(String id) throws SQLException {
+		QueryRunner qr = new QueryRunner(C3P0Utils.getDataSource());
+		String sql="update orders set payState=1 where id =?";
+		qr.update(sql,id);
+	}
+ // 根据用户id查找定单
+	public List<Order> findOrdersByUserId(int userId) throws SQLException {
 		String sql = "select * from orders where user_id = ?";
 		
 		QueryRunner qr = new QueryRunner(C3P0Utils.getDataSource());
 		
-		return qr.query(sql, new BeanListHandler<Order>(Order.class),userid);
+		return qr.query(sql, new BeanListHandler<Order>(Order.class),userId);
 	}
 
-	/**
-	 * 根据定单ID查询定单和详情信息
-	 */
+	  //根据定单ID查询定单和详情信息
 	public Order findOrderByOrderId(String orderId)throws SQLException {
 		// TODO Auto-generated method stub
 		QueryRunner qr = new QueryRunner(C3P0Utils.getDataSource());
@@ -96,5 +94,10 @@ public class OrderDao {
 		
 		return order;
 	}
-
+   //删除订单
+	public int deleteOrderById(String id) throws SQLException {
+		QueryRunner qr = new QueryRunner(C3P0Utils.getDataSource());
+		String sql="delete * from orders where id =?";
+		return qr.update(sql,id);
+	}
 }

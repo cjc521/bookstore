@@ -75,4 +75,15 @@ public class ProductService {
 		}
 		return count;
 	}
+	//修改图书库存
+	public int updatePnum(int id,int pnum){
+		int count=0;
+		try {
+			count = productDao.updateProductNum(id, pnum);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return count;
+	}
+
 }

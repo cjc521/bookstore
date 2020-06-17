@@ -23,15 +23,12 @@ public class ShowProductByPageServlet extends HttpServlet{
 		//获取参数
 		 String category = request.getParameter("category");//分类
 		 String page = request.getParameter("page");//显示页数
-		 
 		 //2.判断
 		 int currentPage = 1;
-		 int pageCount = 4;//每页显示5条数据,这个内部定义，不让外面传参数
+		 int pageCount = 5;//每页显示5条数据,这个内部定义，不让外面传参数
 		 if(page != null){
 			 currentPage = Integer.parseInt(page);
 		 }
-		
-		 
 		 //3.调用service
 		 PageResult<Product> pr = productService.findPageBooks(currentPage, pageCount, category);
 		 
