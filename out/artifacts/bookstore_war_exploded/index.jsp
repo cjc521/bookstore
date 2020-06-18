@@ -3,21 +3,18 @@
 <head>
 <title>bookStore首页</title>
 <%--导入css --%>
-<link rel="stylesheet" href="css/main.css" type="text/css" />
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/main.css" type="text/css" />
 </head>
-
 <body class="main">
-
 	<%@include file="head.jsp"%>
 	<%@include file="menu_search.jsp" %>
 	<div id="divad">
-		<img src="ad/index_ad.jpg" />
+		<img src="${pageContext.request.contextPath}/ad/index_ad.jpg" />
 	</div>
-
 	<div id="divcontent">
 		<table width="900px" border="0" cellspacing="0">
 			<tr>
-				<td width="497"><img src="images/billboard.gif" width="497"
+				<td width="497"><img src="${pageContext.request.contextPath}/images/billboard.gif" width="497"
 					height="38" />
 					<table cellspacing="0" class="ctl">
 						<tr>
@@ -44,18 +41,18 @@
 				<td style="padding:5px 15px 10px 40px"><table width="100%"
 						border="0" cellspacing="0">
 						<tr>
-							<td><img src="images/hottitle.gif" width="126" height="29" />
+							<td><img src="${pageContext.request.contextPath}/images/hottitle.gif" width="126" height="29" />
 							</td>
 						</tr>
 					</table>
 					<table width="100%" border="0" cellspacing="0">
 						<tr>
-							<td style="width:50; text-align:center"><a href="info.html"><img
-									src="bookcover/travelbook.jpg" width="102" height="130"
+							<td style="width:50px; text-align:center"><a href="info.html"><img
+									src="${pageContext.request.contextPath}/bookcover/travelbook.jpg" width="102" height="130"
 									border="0" /> </a><br /> <a href="info.html">TravelBook<br />
 									作者:Lonley Plant</a></td>
-							<td style="width:50; text-align:center"><a href="info.html"><img
-									src="bookcover/java2.jpg" width="102" height="130" border="0" />
+							<td style="width:50px; text-align:center"><a href="info.html"><img
+									src="${pageContext.request.contextPath}/bookcover/java2.jpg" width="102" height="130" border="0" />
 							</a><br /> <a href="info.html">Java2入门经典(JDK5) <br /> 作者:(美)霍顿</a>
 							</td>
 						</tr>

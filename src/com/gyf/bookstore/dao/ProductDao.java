@@ -96,5 +96,123 @@ public class ProductDao{
 		QueryRunner qr = new QueryRunner();
 		return qr.update(ManagerThreadLocal.getConnection(), sql,buynum,id);
 	}
+	//多条件条件查询图书
+	public List<Product> searchIf(String id, String category, String name, String minprice, String maxprice,int start,int pageCount) throws SQLException {
+		QueryRunner qr = new QueryRunner(C3P0Utils.getDataSource());
+		//没有条件，查询所有
+		String sql = "select * from products where 1=1";
+		List<Object> list = new ArrayList<>();
+		//如果选择了书的编号
+		if (id != null && id != "") {
+			sql += " and id like ?";
+			list.add(Integer.parseInt(id));
+		}
+		//如果选择了书的种类
+		if (category != null && category != "") {
+			sql += " and category=?";
+			list.add(category);
+		}
+		//如果选择了书的名称
+		if (name != null && name != "") {
+			sql += " and name like ?";
+			list.add("%" + name + "%");
+		}
+		//如果选择了书的价格区间
+		if ((minprice != null && !("").equals(minprice)) && (maxprice != null && !"".equals(maxprice) ) ){
+			sql += " and price between ? and ? ";
+			list.add(minprice);
+			list.add(maxprice);
+		}
+		sql+="  limit  ?,?";
+		list.add(start);
+		list.add(pageCount);
+		List<Product> products = qr.query(sql, new BeanListHandler<Product>(Product.class), list.toArray());
+		return products;
+	}
+    //多条件查询图书总记录数
+	public long countOfManyConddition(String id, String category, String name, String minprice, String maxprice) throws SQLException {
+		QueryRunner qr = new QueryRunner(C3P0Utils.getDataSource());
+		Long count;
+		//没有条件，查询所有
+		String sql = "select count(id) from products where 1=1";
+		List<Object> list = new ArrayList<>();
+		//如果选择了书的编号
+		if (id != null && id != "") {
+			sql += " and id like ?";
+			list.add(Integer.parseInt(id));
+		}
+		//如果选择了书的种类
+		if (category != null && category != "") {
+			sql += " and category=?";
+			list.add(category);
+		}
+		//如果选择了书的名称
+		if (name != null && name != "") {
+			sql += " and name like ?";
+			list.add("%"+ name + "%");
+		}
+		//如果选择了书的价格区间
+		if ((minprice != null && !("").equals(minprice)) && (maxprice != null && !"".equals(maxprice) ) ){
+			sql += " and price between ? and ? ";
+			list.add(minprice);
+			list.add(maxprice);
+		}
+		count = (long) qr.query(sql, new ScalarHandler(1), list.toArray());
+		return count;
+	}
+    //id删除图书
+	public int deleteProductById(String id) throws SQLException {
+		QueryRunner qr = new QueryRunner(C3P0Utils.getDataSource());
+		String sql = "delete  from products where 1=1";
+		List<Integer> list = new ArrayList<Integer>();
+		if(id !=null && !"".equals(id)){
+			sql+=" and id =?";
+			list.add(Integer.parseInt(id));
+		}
+		return  qr.update(sql,list.toArray());
+	}
+	//修改图书
+	public int updateProduct(int id, String name, double price, String category, int pnum, String imgurl, String description) throws SQLException {
+		QueryRunner qr = new QueryRunner(C3P0Utils.getDataSource());
+		//没有条件，查询所有
+		String sql = "update  products set id=id";
+		List<Object> list = new ArrayList<>();
+		//如果选择了书的种类
+		if (category != null && !"".equals(category) ){
+			sql += ",category =?";
+			list.add(category);
+		}
+		//如果选择了书的名称
+		if (name != null && !"".equals(name)) {
+			sql += ",name =?";
+			list.add(name);
+		}
+		if (imgurl != null && !"".equals(imgurl)) {
+			sql += ",imgurl =?";
+			list.add(imgurl);
+		}
+		if (String.valueOf(pnum) != null && !"".equals(String.valueOf(pnum))) {
+			sql += ",pnum =?";
+			list.add(pnum);
+		}
+		if ( String.valueOf(price) != null && !"".equals(String.valueOf(price) )) {
+			sql += ",price =?";
+			list.add(price);
+		}
+		if (description != null && !"".equals(description)) {
+			sql += ",description =?";
+			list.add(description);
+		}
+		sql+="  where id=?";
+		list.add(id);
+		return qr.update(sql,list.toArray());
+	}
 
 }
+
+
+
+
+
+
+

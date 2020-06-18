@@ -5,13 +5,11 @@
 <html>
 <head>
 <title>电子书城</title>
-<link rel="stylesheet" href="css/main.css" type="text/css" />
+<link rel="stylesheet" href="${pageContext.request.contextPath }/css/main.css" type="text/css" />
 </head>
-
 <body class="main">
 	<jsp:include page="head.jsp" />
 	<jsp:include page="menu_search.jsp" />
-
 	<div id="divpagecontent">
 		<table width="100%" border="0" cellspacing="0">
 			<tr>
@@ -21,20 +19,20 @@
 							<td class="listtitle">我的帐户</td>
 						</tr>
 						<tr>
-							<td class="listtd"><img src="images/miniicon.gif" width="9"
+							<td class="listtd"><img src="${pageContext.request.contextPath }/images/miniicon.gif" width="9"
 								height="6" />&nbsp;&nbsp;&nbsp;&nbsp; <a
-								href="modifyuserinfo.jsp">用户信息修改</a>
+								href="${pageContext.request.contextPath }/modifyuserinfo.jsp">用户信息修改</a>
 							</td>
 						</tr>
 
 						<tr>
-							<td class="listtd"><img src="images/miniicon.gif" width="9"
-								height="6" />&nbsp;&nbsp;&nbsp;&nbsp; <a href="${pageContext.request.contextPath}/findOrderByUserId?id=${user.id}">订单查询</a>
+							<td class="listtd"><img src="${pageContext.request.contextPath }/images/miniicon.gif" width="9"
+								height="6" />&nbsp;&nbsp;&nbsp;&nbsp; <a href="${pageContext.request.contextPath}/order/findOrderByUserId?id=${user.id}">订单查询</a>
 							</td>
 						</tr>
 						<tr>
-							<td class="listtd"><img src="images/miniicon.gif" width="9"
-								height="6" />&nbsp;&nbsp;&nbsp;&nbsp; <a href="${pageContext.request.contextPath }/user?action=logout">用戶退出</a></td>
+							<td class="listtd"><img src="${pageContext.request.contextPath }/images/miniicon.gif" width="9"
+								height="6" />&nbsp;&nbsp;&nbsp;&nbsp; <a href="${pageContext.request.contextPath }/user/logout">用戶退出</a></td>
 						</tr>
 
 
@@ -42,7 +40,7 @@
 				</td>
 				<td><div style="text-align:right; margin:5px 10px 5px 0px">
 						<a href="index.jsp">首页</a>&nbsp;&nbsp;&nbsp;&nbsp;&gt;&nbsp;&nbsp;&nbsp;<a
-							href="myAccount.jsp">&nbsp;我的帐户</a>&nbsp;&nbsp;&nbsp;&nbsp;&gt;&nbsp;&nbsp;&nbsp;&nbsp;订单查询
+							href="${pageContext.request.contextPath }/myAccount.jsp">&nbsp;我的帐户</a>&nbsp;&nbsp;&nbsp;&nbsp;&gt;&nbsp;&nbsp;&nbsp;&nbsp;订单查询
 					</div>
 
 					<table cellspacing="0" class="infocontent">
@@ -68,8 +66,8 @@
 												<fmt:formatDate value="${order.ordertime}" pattern="yyyy-MM-dd HH:mm:ss"/>
 											</td>
 											<td class="tableopentd02">${order.paystate==0? '未支付' : '已支付'}</td>
-											<td class="tableopentd03"><a href="${pageContext.request.contextPath}/findOrderById?orderId=${order.id}">查看</a>&nbsp;&nbsp;
-												<a href="${pageContext.request.contextPath}/deleteOrderById?orderId=${order.id}">刪除</a>
+											<td class="tableopentd03"><a href="${pageContext.request.contextPath}/order/findOrderById?orderId=${order.id}">查看</a>&nbsp;&nbsp;
+												<a href="${pageContext.request.contextPath}/order/deleteOrderById?orderId=${order.id}">刪除</a>
 											</td>
 										</tr>
 									</c:forEach>
@@ -80,14 +78,11 @@
 			</tr>
 		</table>
 	</div>
-
-
-
 	<div id="divfoot">
 		<table width="100%" border="0" cellspacing="0">
 			<tr>
 				<td rowspan="2" style="width:10%"><img
-					src="images/bottomlogo.gif" width="195" height="50"
+					src="${pageContext.request.contextPath }/images/bottomlogo.gif" width="195" height="50"
 					style="margin-left:175px" />
 				</td>
 				<td style="padding-top:5px; padding-left:50px"><a href="#"><font
@@ -96,12 +91,10 @@
 			</tr>
 			<tr>
 				<td style="padding-left:50px"><font color="#CCCCCC"><b>COPYRIGHT
-							2008 &copy; eShop All Rights RESERVED.</b> </font>
+							2020 &copy; eShop All Rights RESERVED.</b> </font>
 				</td>
 			</tr>
 		</table>
 	</div>
-
-
 </body>
 </html>

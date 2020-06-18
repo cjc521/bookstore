@@ -41,7 +41,6 @@ public class RoleFilter implements Filter{
 				chain.doFilter(request, response);
 				return;
 			}
-		
 		}
 		
 		//进入登录界面

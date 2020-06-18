@@ -5,7 +5,7 @@
 <head>
 <title>电子书城</title>
 
-<link rel="stylesheet" href="css/main.css" type="text/css" />
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/main.css" type="text/css" />
 </head>
 
 <body class="main">
@@ -14,7 +14,7 @@
 	<jsp:include page="menu_search.jsp" />
 
 	<div id="divcontent">
-		<form action="${pageContext.request.contextPath}/user?action=login" method="post">
+		<form action="${pageContext.request.contextPath}/user/login" method="post">
 			<table width="900px" border="0" cellspacing="0">
 				<tr>
 					<td style="padding:30px"><div style="height:470px">
@@ -27,7 +27,7 @@
 												<table width="100%" border="0" cellspacing="0">
 													<tr>
 														<td style="text-align:center; padding-top:20px"><img
-															src="images/logintitle.gif" width="150" height="30" />
+															src="${pageContext.request.contextPath}/images/logintitle.gif" width="150" height="30" />
 														</td>
 													</tr>
 													<tr>
@@ -62,20 +62,20 @@
 																	<td colspan="2"
 																		style="padding-top:10px; text-align:center"><input
 																		name="image" type="image" 
-																		src="images/loginbutton.gif" width="83" height="22" />
+																		src="${pageContext.request.contextPath}/images/loginbutton.gif" width="83" height="22" />
 																	</td>
 																</tr>
 
 																<tr>
 																	<td colspan="2" style="padding-top:10px"><img
-																		src="images/loginline.gif" width="241" height="10" />
+																		src="${pageContext.request.contextPath}/images/loginline.gif" width="241" height="10" />
 																	</td>
 																</tr>
 																<tr>
 																	<td colspan="2"
 																		style="padding-top:10px; text-align:center"><a
 																		href="register.jsp"><img name="image"
-																			src="images/signupbutton.gif" width="135" height="33" />
+																			src="${pageContext.request.contextPath}/images/signupbutton.gif" width="135" height="33" />
 																	</a></td>
 																</tr>
 															</table>
@@ -89,7 +89,7 @@
 											<p>超人气社区！精彩活动每一天。买卖更安心！支付宝交易超安全。</p>
 											<p style="text-align:right">
 												<a href="register.jsp"><img
-													src="images/signupbutton.gif" width="135" height="33" /> </a>
+													src="${pageContext.request.contextPath}/images/signupbutton.gif" width="135" height="33" /> </a>
 											</p>
 										</td>
 									</tr>

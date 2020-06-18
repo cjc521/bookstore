@@ -4,7 +4,7 @@
 <html>
 <head>
 <title>电子书城</title>
-<link rel="stylesheet" href="css/main.css" type="text/css" />
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/main.css" type="text/css" />
 <script type="text/javascript">
 	/* 	id : 产品id,书的id
 	 num:更改的数量
@@ -29,10 +29,8 @@
 		console.log('执行操作....');
 		//重新访问后台，更改session的数据
 		location.href = '${pageContext.request.contextPath}/changeNum?id=' + id + '&num=' + num;
-		
 	}
 </script>
-
 </head>
 
 <body class="main">
@@ -46,10 +44,10 @@
 					</div>
 					<table cellspacing="0" class="infocontent">
 						<tr>
-							<td><img src="ad/page_ad.jpg" width="666" height="89" />
+							<td><img src="${pageContext.request.contextPath}/ad/page_ad.jpg" width="666" height="89" />
 								<table width="100%" border="0" cellspacing="0">
 									<tr>
-										<td><img src="images/buy1.gif" width="635" height="38" />
+										<td><img src="${pageContext.request.contextPath}/images/buy1.gif" width="635" height="38" />
 										</td>
 									</tr>
 									<tr>
@@ -98,10 +96,10 @@
 												</tr>
 											</table>
 											<div style="text-align: right; margin-top: 10px">
-												<a href="${pageContext.request.contextPath}/showProductByPage"><img src="images/gwc_jx.gif"
+												<a href="${pageContext.request.contextPath}/product/showProductByPage"><img src="${pageContext.request.contextPath}/images/gwc_jx.gif"
 													border="0" /> </a> &nbsp;&nbsp;&nbsp;&nbsp;
-												<a href="${pageContext.request.contextPath}/settleAccounts"><img
-													src="images/gwc_buy.gif" border="0" /> </a>
+												<a href="${pageContext.request.contextPath}/order/settleAccounts"><img
+													src="${pageContext.request.contextPath}/images/gwc_buy.gif" border="0" /> </a>
 											</div>
 										</td>
 									</tr>

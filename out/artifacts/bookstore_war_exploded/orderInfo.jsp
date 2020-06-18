@@ -4,10 +4,8 @@
 <html>
 <head>
 <title>电子书城</title>
-<link rel="stylesheet" href="css/main.css" type="text/css" />
+<link rel="stylesheet" href="${pageContext.request.contextPath }/css/main.css" type="text/css" />
 </head>
-
-
 <body class="main">
 	<jsp:include page="head.jsp" />
 	<jsp:include page="menu_search.jsp" />
@@ -48,7 +46,6 @@
 													</tr>
 												</table>
 											</c:forEach>
-
 											<table cellspacing="1" class="carttable">
 												<tr>
 													<td style="text-align:right; padding-right:40px;"><font
@@ -62,7 +59,7 @@
 											</p>
 											<hr>
 											<p style="text-align:right">
-												<a href="pay.jsp"><img src="images/gif53_029.gif" width="204"
+												<a href="${pageContext.request.contextPath}/pay.jsp"><img src="${pageContext.request.contextPath }/images/gif53_029.gif" width="204"
 													height="51" border="0" /> </a>
 											</p>
 										</td>

@@ -6,15 +6,11 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <LINK href="${pageContext.request.contextPath}/admin/css/Style.css"
 	type="text/css" rel="stylesheet">
-
-
 </HEAD>
-
 <body>
 	<form id="userAction_save_do" name="Form1"
 		action="${pageContext.request.contextPath}/product/addProduct" method="post"
-		enctype="multipart/form-data">
-		&nbsp;
+		enctype="multipart/form-data">&nbsp;
 		<table cellSpacing="1" cellPadding="5" width="100%" align="center"
 			bgColor="#eeeeee" style="border: 1px solid #8ba7e3" border="0">
 			<tr>
@@ -44,7 +40,7 @@
 				<td align="center" bgColor="#f5fafe" class="ta_01">商品类别：</td>
 				<td class="ta_01" bgColor="#ffffff"><select name="category"
 					id="category">
-						<option value="" selected="selected">--选择商品类加--</option>
+						<option value="" selected="selected">--选择商品类别--</option>
 						<option value="文学">文学</option>
 						<option value="生活">生活</option>
 						<option value="计算机">计算机</option>
@@ -84,20 +80,11 @@
 					src="${pageContext.request.contextPath}/admin/images/shim.gif">
 				</td>
 			</TR>
-
-
 			<tr>
 				<td class="ta_01" style="WIDTH: 100%" align="center"
 					bgColor="#f5fafe" colSpan="4">
-					
-					
-						
-					<input type="submit" class="button_ok" value="确定">	
-						
+					<input type="submit" class="button_ok" value="确定">
 					<FONT face="宋体">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT>
-					
-					
-					
 					<input type="reset" value="重置" class="button_cancel">
 
 					<FONT face="宋体">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT> <INPUT

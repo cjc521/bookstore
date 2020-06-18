@@ -16,8 +16,7 @@
 </HEAD>
 <body>
 	<br>
-	<form id="Form1" name="Form1"
-		action="${pageContext.request.contextPath}/findProductByManyCondition"
+	<form id="Form1" name="Form1" action="${pageContext.request.contextPath}/product/findProductByManyCondition"
 		method="post">
 		<table cellSpacing="1" cellPadding="0" width="100%" align="center"
 			bgColor="#f5fafe" border="0">
@@ -107,53 +106,80 @@
 						<table cellspacing="0" cellpadding="1" rules="all"
 							bordercolor="gray" border="1" id="DataGrid1"
 							style="BORDER-RIGHT: gray 1px solid; BORDER-TOP: gray 1px solid; BORDER-LEFT: gray 1px solid; WIDTH: 100%; WORD-BREAK: break-all; BORDER-BOTTOM: gray 1px solid; BORDER-COLLAPSE: collapse; BACKGROUND-COLOR: #f5fafe; WORD-WRAP: break-word">
-							<tr
-								style="FONT-WEIGHT: bold; FONT-SIZE: 12pt; HEIGHT: 25px; BACKGROUND-COLOR: #afd1f3">
-								<td align="center" width="24%">商品编号</td>
-								<td align="center" width="18%">商品名称</td>
-								<td align="center" width="9%">商品价格</td>
-								<td align="center" width="9%">商品数量</td>
-								<td width="8%" align="center">商品类别</td>
+							<tr style="FONT-WEIGHT: bold; FONT-SIZE: 12pt; HEIGHT: 25px; BACKGROUND-COLOR: #afd1f3">
+								<td align="center" width="18%">图书编号</td>
+<%--								<td align="center" width="11%">图书封面</td>--%>
+								<td align="center" width="15%">图书名称</td>
+								<td align="center" width="9%">图书价格</td>
+								<td align="center" width="9%">图书数量</td>
+								<td width="8%" align="center">图书类别</td>
 								<td width="8%" align="center">编辑</td>
-
 								<td width="8%" align="center">删除</td>
 							</tr>
-
-							
-								<tr onmouseover="this.style.backgroundColor = 'white'"
-									onmouseout="this.style.backgroundColor = '#F5FAFE';">
-									<td style="CURSOR: hand; HEIGHT: 22px" align="center"
-										width="23">001</td>
-									<td style="CURSOR: hand; HEIGHT: 22px" align="center"
-										width="18%">xxx</td>
-									<td style="CURSOR: hand; HEIGHT: 22px" align="center"
-										width="8%">xxx</td>
-									<td style="CURSOR: hand; HEIGHT: 22px" align="center"
-										width="8%">xxx</td>
-									<td style="CURSOR: hand; HEIGHT: 22px" align="center">
-										xxx</td>
-									<td align="center" style="HEIGHT: 22px" width="7%"><a
-										href="../products/edit.jsp">
-											<img
-											src="${pageContext.request.contextPath}/admin/images/i_edit.gif"
+							<c:forEach items="${pr.list}" var="book" varStatus="vs">
+							<tr onmouseover="this.style.backgroundColor = 'white'"
+								onmouseout="this.style.backgroundColor = '#F5FAFE';">
+								<td style="CURSOR: hand; HEIGHT: 22px" align="center"
+									width="23">${book.id}</td>
+								<%--<td style="CURSOR: hand; HEIGHT: 22px" align="center"
+									width="11"><img src="${book.imgurl}" alt="${book.name}"></td>--%>
+								<td style="CURSOR: hand; HEIGHT: 22px" align="center"
+									width="18%">${book.name}</td>
+								<td style="CURSOR: hand; HEIGHT: 22px" align="center"
+									width="8%">${book.price}</td>
+								<td style="CURSOR: hand; HEIGHT: 22px" align="center"
+									width="8%">${book.pnum}</td>
+								<td style="CURSOR: hand; HEIGHT: 22px" align="center">
+										${book.category}</td>
+								<td align="center" style="HEIGHT: 22px" width="7%"><a
+										href="${pageContext.request.contextPath}/product/findProductById?id=${book.id}">
+									<img src="${pageContext.request.contextPath}/admin/images/i_edit.gif"
 											border="0" style="CURSOR: hand"> </a>
-									</td>
-
-									<td align="center" style="HEIGHT: 22px" width="7%"><a
-										href="#">
-											<img
-											src="${pageContext.request.contextPath}/admin/images/i_del.gif"
+								</td>
+								<td align="center" style="HEIGHT: 22px" width="7%"><a
+										href="${pageContext.request.contextPath}/product/deleteProduct?id=${book.id}">
+									<img src="${pageContext.request.contextPath}/admin/images/i_del.gif"
 											width="16" height="16" border="0" style="CURSOR: hand">
-									</a>
-									</td>
-								</tr>
-							
+								</a>
+								</td>
+							</tr>
+							</c:forEach>
 						</table>
 					</td>
 				</tr>
 			</TBODY>
 		</table>
 	</form>
+	<div class="pagination">
+		<ul>
+			<span>第${pr.currentPage}页/共 ${pr.totalPage}页</span>
+			<!-- 显示上一页 -->
+			<c:if test="${pr.currentPage > 1}">
+				<a href="${pageContext.request.contextPath}/product/findProductByManyCondition?id=${id}&category=${category}&name=${name}&minprice=${minprice}&maxprice=${maxprice}&page=${pr.currentPage-1}"><button>上一页</button></a>
+			</c:if>
+			<!-- 显示下一页 -->
+			<c:if test="${pr.currentPage < pr.totalPage}">
+				<a href="${pageContext.request.contextPath}/product/findProductByManyCondition?id=${id}&category=${category}&name=${name}&minprice=${minprice}&maxprice=${maxprice}&page=${pr.currentPage+1}"><button>下一页</button></a>
+			</c:if>
+			<br>
+			<c:choose>
+				<c:when test="${pr.totalPage <= 4}">
+					<c:forEach var="i" begin="1" end="${pr.totalPage}">
+						<a href="${pageContext.request.contextPath}/product/findProductByManyCondition?id=${id}&category=${category}&name=${name}&minprice=${minprice}&maxprice=${maxprice}&page=${i}"><button>第${i}页</button></a>
+					</c:forEach>
+					<br>
+				</c:when>
+				<c:otherwise>
+					<c:forEach var="i" begin="${pr.currentPage}" end="${pr.totalPage}">
+						<a href="${pageContext.request.contextPath}/product/findProductByManyCondition?id=${id}&category=${category}&name=${name}&minprice=${minprice}&maxprice=${maxprice}&page=${i}"><button>第${i}页</button></a>
+					</c:forEach>
+					<br>
+				</c:otherwise>
+			</c:choose>
+		</ul>
+	</div>
+	${category}
+	${currentPage}
+	${name}
 </body>
 </HTML>
-

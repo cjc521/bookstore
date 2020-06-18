@@ -1,13 +1,11 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
-
-
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
 <head>
 <title>电子书城</title>
-<link rel="stylesheet" href="css/main.css" type="text/css" />
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/main.css" type="text/css" />
 
-<script type="text/javascript" src="js/my.js">
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/my.js">
 	
 </script>
 </head>
@@ -22,8 +20,8 @@
 				<td style="padding:30px; text-align:center"><table width="60%"
 						border="0" cellspacing="0" style="margin-top:70px">
 						<tr>
-							<td style="width:98"><img
-								src="images/IconTexto_WebDev_009.jpg" width="128" height="128" />
+							<td style="width:98px"><img
+								src="${pageContext.request.contextPath}/images/IconTexto_WebDev_009.jpg" width="128" height="128" />
 							</td>
 							<td style="padding-top:30px"><font
 								style="font-weight:bold; color:#FF0000">用户信息修改成功，请重新登录</font><br /> <br />
@@ -34,11 +32,6 @@
 			</tr>
 		</table>
 	</div>
-
-
-
 	<jsp:include page="foot.jsp" />
-
-
 </body>
 </html>

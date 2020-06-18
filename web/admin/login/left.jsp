@@ -23,18 +23,16 @@
 		<!--
 		d = new dTree('d');
 		d.add(0,-1,'系统菜单树');
-		d.add(1,0,'商品管理','/bookStore/admin/login/welcome.jsp','','mainFrame');
-		d.add(2,0,'订单管理','/bookStore/admin/login/welcome.jsp','','mainFrame');
-		
+		d.add(1,0,'商品管理','${pageContext.request.contextPath}/admin/login/welcome.jsp','','mainFrame');
+		d.add(2,0,'订单管理','${pageContext.request.contextPath}/admin/login/welcome.jsp','','mainFrame');
 		
 		//子目录添加
 		d.add(11,1,'商品查看','/bookStore/admin/products/list.jsp','','mainFrame');
+		<%--d.add(11,1,'商品查看','${pageContext.request.contextPath}/products/findProductByManyCondition?page=1','','mainFrame');--%>
 
 		d.add(12,1,'销售榜单','/bookStore/admin/products/download.jsp','','mainFrame')
 
 		d.add(21,2,'订单查看','/bookStore/admin/orders/list.jsp','','mainFrame');
-	
-		
 		document.write(d);
 		//-->
 	</script>

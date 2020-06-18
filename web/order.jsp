@@ -4,7 +4,7 @@
 <html>
 <head>
 <title>电子书城</title>
-<link rel="stylesheet" href="css/main.css" type="text/css" />
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/main.css" type="text/css" />
 <script type="text/javascript">
 	function submitOrder(){
 		//前端验证
@@ -36,13 +36,12 @@
 						<a href="index.jsp">首页</a>&nbsp;&nbsp;&nbsp;&nbsp;&gt;&nbsp;&nbsp;&nbsp;<a
 							href="cart.jsp">&nbsp;购物车</a>&nbsp;&nbsp;&nbsp;&nbsp;&gt;&nbsp;&nbsp;&nbsp;&nbsp;订单
 					</div>
-
-					<form id="orderForm" action="${pageContext.request.contextPath}/createOrder" method="post">
+					<form id="orderForm" action="${pageContext.request.contextPath}/order/createOrder" method="post">
 						<table cellspacing="0" class="infocontent">
 							<tr>
 								<td><table width="100%" border="0" cellspacing="0">
 										<tr>
-											<td><img src="images/buy2.gif" width="635" height="38" />
+											<td><img src="${pageContext.request.contextPath}/images/buy2.gif" width="635" height="38" />
 												<p>您好：${user.username}先生！欢迎您来到商城结算中心</p></td>
 										</tr>
 										<tr>
@@ -59,7 +58,6 @@
 												<c:set var="totalPrice" value="0"></c:set>
 												<table width="100%" border="0" cellspacing="0">
 													<c:forEach items="${cart}" var="cart" varStatus="vs">
-													
 														<tr>
 															<td width="10%">${vs.count}</td>
 															<td width="20%">${cart.key.name}</td>
@@ -70,7 +68,6 @@
 															<td width="10%">${cart.value * cart.key.price}</td>
 															<c:set var="totalPrice" value="${totalPrice + cart.key.price * cart.value}"></c:set>
 														</tr>
-													
 													</c:forEach>
 												</table>
 												<table cellspacing="1" class="carttable">
@@ -79,7 +76,6 @@
 															style="color:#FF0000">合计：&nbsp;&nbsp;${totalPrice}</font></td>
 													</tr>
 												</table>
-
 												<p>
 													收货地址：<input id="receiverAddress" name="receiverAddress" type="text" value=""
 														style="width:350px" />&nbsp;&nbsp;&nbsp;&nbsp;<a href="#"></a>
@@ -92,7 +88,7 @@
 												</p>
 												<hr />
 												<p style="text-align:right">
-													<img src="images/gif53_029.gif" width="204" height="51"
+													<img src="${pageContext.request.contextPath}/images/gif53_029.gif" width="204" height="51"
 														border="0" onclick="submitOrder();"/>
 												</p></td>
 										</tr>

@@ -1,20 +1,14 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
-
-
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
 <head>
 
 <title>电子书城</title>
-<link rel="stylesheet" href="css/main.css" type="text/css" />
-
-<script type="text/javascript" src="js/my.js">
-	
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/main.css" type="text/css" />
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/my.js">
 </script>
 </head>
-
 <body class="main" onload="startSecond()">
-
 	<jsp:include page="head.jsp"></jsp:include>
 	<jsp:include page="menu_search.jsp" />
 	<div id="divcontent">
@@ -24,11 +18,11 @@
 						border="0" cellspacing="0" style="margin-top:70px">
 						<tr>
 							<td style="width:98px"><img
-								src="images/IconTexto_WebDev_009.jpg" width="128" height="128" />
+								src="${pageContext.request.contextPath}/images/IconTexto_WebDev_009.jpg" width="128" height="128" />
 							</td>
 							<td style="padding-top:30px"><font
 								style="font-weight:bold; color:#FF0000">支付成功</font><br />
-								<br /> <a href="index.jsp"><span id="second">5</span>秒后自动为您转跳回首页</a></td>
+								<br /> <a href="${pageContext.request.contextPath}/index.jsp"><span id="second">5</span>秒后自动为您转跳回首页</a></td>
 						</tr>
 					</table>
 					<h1>&nbsp;</h1></td>
@@ -36,6 +30,5 @@
 		</table>
 	</div>
 	<jsp:include page="foot.jsp"/>
-
 </body>
 </html>

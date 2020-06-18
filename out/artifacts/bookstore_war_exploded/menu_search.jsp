@@ -6,10 +6,8 @@
 <script type="text/javascript">
 	function fillNameValue(subDiv) {
 		document.getElementById("name").value = subDiv.innerHTML;
-		
 		document.getElementById("content").style.display="none";
 	}
-
 	function searchName() {
 		var nameElement = document.getElementById("name");
 		//获取输入的信息
@@ -58,50 +56,48 @@
 
 <div id="divmenu">
 	<a
-		href="${pageContext.request.contextPath}/showProductByPage?category=文学">文学</a>
+		href="${pageContext.request.contextPath}/product/showProductByPage?category=文学">文学</a>
 	<a
-		href="${pageContext.request.contextPath}/showProductByPage?category=生活">生活</a>
+		href="${pageContext.request.contextPath}/product/showProductByPage?category=生活">生活</a>
 	<a
-		href="${pageContext.request.contextPath}/showProductByPage?category=计算机">计算机</a>
+		href="${pageContext.request.contextPath}/product/showProductByPage?category=计算机">计算机</a>
 	<a
-		href="${pageContext.request.contextPath}/showProductByPage?category=外语">外语</a>
+		href="${pageContext.request.contextPath}/product/showProductByPage?category=外语">外语</a>
 	<a
-		href="${pageContext.request.contextPath}/showProductByPage?category=经营">经管</a>
+		href="${pageContext.request.contextPath}/product/showProductByPage?category=经营">经管</a>
 	<a
-		href="${pageContext.request.contextPath}/showProductByPage?category=励志">励志</a>
+		href="${pageContext.request.contextPath}/product/showProductByPage?category=励志">励志</a>
 	<a
-		href="${pageContext.request.contextPath}/showProductByPage?category=社科">社科</a>
+		href="${pageContext.request.contextPath}/product/showProductByPage?category=社科">社科</a>
 	<a
-		href="${pageContext.request.contextPath}/showProductByPage?category=学术">学术</a>
+		href="${pageContext.request.contextPath}/product/showProductByPage?category=学术">学术</a>
 	<a
-		href="${pageContext.request.contextPath}/showProductByPage?category=少儿">少儿</a>
+		href="${pageContext.request.contextPath}/product/showProductByPage?category=少儿">少儿</a>
 	<a
-		href="${pageContext.request.contextPath}/showProductByPage?category=艺术">艺术</a>
+		href="${pageContext.request.contextPath}/product/showProductByPage?category=艺术">艺术</a>
 	<a
-		href="${pageContext.request.contextPath}/showProductByPage?category=原版">原版</a>
+		href="${pageContext.request.contextPath}/product/showProductByPage?category=原版">原版</a>
 	<a
-		href="${pageContext.request.contextPath}/showProductByPage?category=科技">科技</a>
+		href="${pageContext.request.contextPath}/product/showProductByPage?category=科技">科技</a>
 	<a
-		href="${pageContext.request.contextPath}/showProductByPage?category=考试">考试</a>
+		href="${pageContext.request.contextPath}/product/showProductByPage?category=考试">考试</a>
 	<a
-		href="${pageContext.request.contextPath}/showProductByPage?category=生活百科">生活百科</a>
-	<a href="${pageContext.request.contextPath}/showProductByPage" style="color:#FFFF00">全部商品目录</a>
+		href="${pageContext.request.contextPath}/product/showProductByPage?category=生活百科">生活百科</a>
+	<a href="${pageContext.request.contextPath}/product/showProductByPage" style="color:#FFFF00">全部商品目录</a>
 </div>
 <div id="divsearch">
-	<form action="${pageContext.request.contextPath}/findProductBySearch"
-		method="post">
+	<form action="${pageContext.request.contextPath}/product/findProductBySearch" method="post">
 		<table width="100%" border="0" cellspacing="0">
 			<tr>
 				<td style="text-align:right; padding-right:220px">
 				 <input
 					type="text" name="name" placeholder="请输入书名关键字" class="inputtable" onkeyup="searchName();"
 					id="name" /> 
-					<input type="image" src="images/serchbutton.gif"
+					<input type="image" src="${pageContext.request.contextPath}/images/serchbutton.gif"
 					border="0" style="margin-bottom:-4px">
 				</td>
 			</tr>
 		</table>
-
 	</form>
 </div>
 <div id="content"

@@ -1,11 +1,9 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
-
-
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
 <head>
 <title>电子书城</title>
-<link rel="stylesheet" href="css/main.css" type="text/css" />
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/main.css" type="text/css" />
 </head>
 
 <body class="main">
@@ -21,20 +19,20 @@
 							<td class="listtitle">我的帐户</td>
 						</tr>
 						<tr>
-							<td class="listtd"><img src="images/miniicon.gif" width="9"
+							<td class="listtd"><img src="${pageContext.request.contextPath}/images/miniicon.gif" width="9"
 								height="6" />&nbsp;&nbsp;&nbsp;&nbsp; <a
 								href="${pageContext.request.contextPath }/modifyuserinfo.jsp">用户信息修改</a></td>
 						</tr>
 
 						<tr>
-							<td class="listtd"><img src="images/miniicon.gif" width="9"
-								height="6" />&nbsp;&nbsp;&nbsp;&nbsp; <a href="${pageContext.request.contextPath}/findOrderByUserId?id=${user.id}">订单查询</a>
+							<td class="listtd"><img src="${pageContext.request.contextPath }/images/miniicon.gif" width="9"
+								height="6" />&nbsp;&nbsp;&nbsp;&nbsp; <a href="${pageContext.request.contextPath}/order/findOrderByUserId?id=${user.id}">订单查询</a>
 							</td>
 						</tr>
 
 						<tr>
-							<td class="listtd"><img src="images/miniicon.gif" width="9"
-								height="6" />&nbsp;&nbsp;&nbsp;&nbsp; <a href="${pageContext.request.contextPath }/user?action=logout">用戶退出</a>
+							<td class="listtd"><img src="${pageContext.request.contextPath }/images/miniicon.gif" width="9"
+								height="6" />&nbsp;&nbsp;&nbsp;&nbsp; <a href="${pageContext.request.contextPath }/user/logout">用戶退出</a>
 							</td>
 						</tr>
 					</table></td>
@@ -47,7 +45,7 @@
 					<table cellspacing="0" class="infocontent">
 						<tr>
 							<td>
-								<form action="modifyUserInfo" method="post">
+								<form action="${pageContext.request.contextPath}/user/modifyUserInfo" method="post">
 									<input type="hidden" name="id" value="${user.id}">
 									<table width="100%" border="0" cellspacing="2" class="upline">
 										<tr>
@@ -99,7 +97,7 @@
 
 							<p style="text-align:center">
 
-										<input type="image" src="images/botton_gif_025.gif" border="0">
+										<input type="image" src="${pageContext.request.contextPath}/images/botton_gif_025.gif" border="0">
 
 									</p>
 									<p style="text-align:center">&nbsp;</p>

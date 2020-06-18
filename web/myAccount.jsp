@@ -5,16 +5,12 @@
 <html>
 <head>
 <title>电子书城</title>
-<link rel="stylesheet" href="css/main.css" type="text/css" />
+<link rel="stylesheet" href="${pageContext.request.contextPath }/css/main.css" type="text/css" />
 </head>
 
 <body class="main">
-
 	<jsp:include page="head.jsp" />
-
 	<jsp:include page="menu_search.jsp" />
-
-
 	<div id="divpagecontent">
 		<table width="100%" border="0" cellspacing="0">
 			<tr>
@@ -24,20 +20,20 @@
 							<td class="listtitle">我的帐户</td>
 						</tr>
 						<tr>
-							<td class="listtd"><img src="images/miniicon.gif" width="9"
+							<td class="listtd"><img src="${pageContext.request.contextPath }/images/miniicon.gif" width="9"
 								height="6" />&nbsp;&nbsp;&nbsp;&nbsp; <a
 								href="${pageContext.request.contextPath }/modifyuserinfo.jsp">用户信息修改</a></td>
 						</tr>
 						<tr>
-							<td class="listtd"><img src="images/miniicon.gif" width="9"
+							<td class="listtd"><img src="${pageContext.request.contextPath }/images/miniicon.gif" width="9"
 								height="6" />&nbsp;&nbsp;&nbsp;&nbsp; 
-								<a href="${pageContext.request.contextPath}/findOrderByUserId?id=${user.id}">订单查询</a>
+								<a href="${pageContext.request.contextPath}/order/findOrderByUserId?id=${user.id}">订单查询</a>
 							</td>
 						</tr>
 						<tr>
-							<td class="listtd"><img src="images/miniicon.gif" width="9"
+							<td class="listtd"><img src="${pageContext.request.contextPath }/images/miniicon.gif" width="9"
 								height="6" />&nbsp;&nbsp;&nbsp;&nbsp;
-								 <a href="${pageContext.request.contextPath }/user?action=logout">用戶退出</a>
+								 <a href="${pageContext.request.contextPath}/user/logout">用戶退出</a>
 							</td>
 						</tr>
 					</table></td>
@@ -48,7 +44,7 @@
 					<table cellspacing="0" class="infocontent">
 						<tr>
 							<td style="padding:20px"><p>
-									<img src="ad/myad.jpg" width="631" height="436" />
+									<img src="${pageContext.request.contextPath }/ad/myad.jpg" width="631" height="436" />
 								</p>
 							</td>
 						</tr>
@@ -61,7 +57,7 @@
 		<table width="100%" border="0" cellspacing="0">
 			<tr>
 				<td rowspan="2" style="width:10%"><img
-					src="images/bottomlogo.gif" width="195" height="50"
+					src="${pageContext.request.contextPath }/images/bottomlogo.gif" width="195" height="50"
 					style="margin-left:175px" /></td>
 				<td style="padding-top:5px; padding-left:50px"><a href="#"><font
 						color="#747556"><b>CONTACT US</b> </font> </a></td>
@@ -72,7 +68,5 @@
 			</tr>
 		</table>
 	</div>
-
-
 </body>
 </html>

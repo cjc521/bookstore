@@ -17,18 +17,15 @@ import com.gyf.bookstore.exception.UserException;
 import com.gyf.bookstore.service.UserService;
 
 @WebServlet("/user/*")
-public class UserServlet extends BaseServlet {
-
-	
-
+public class UserServlet extends Base {
+	UserService us = new UserService();
+	//用户登录
 	public void login(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		// 1.获取请求参数
-
 		String username = request.getParameter("username");
 		String password = request.getParameter("password");
 
-		UserService us = new UserService();
 		try {
 			// 2.登录成功
 			User user = us.login(username, password);
@@ -39,7 +36,8 @@ public class UserServlet extends BaseServlet {
 				path = "/index.jsp";
 			}
 			request.getSession().setAttribute("user", user);
-			request.getRequestDispatcher(path).forward(request, response);
+			response.sendRedirect(request.getContextPath()+path);
+//			request.getRequestDispatcher(path).forward(request, response);
 		} catch (UserException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -50,8 +48,7 @@ public class UserServlet extends BaseServlet {
 
 	}
 
-	
-	/*** 注册*/
+	/*** 用户注册*/
 	public void register(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
@@ -80,7 +77,6 @@ public class UserServlet extends BaseServlet {
 			// 注册
 			UserService us = new UserService();
 			us.register(user);
-
 			// 注册成功跳转到成功界面
 			request.getRequestDispatcher("/registersuccess.jsp").forward(request, response);
 			System.out.println(user);
@@ -94,13 +90,49 @@ public class UserServlet extends BaseServlet {
 			e.printStackTrace();
 		}
 }
-	
-	/**
-	 * 退出
-	 */
+	 //用户退出
 	public void logout(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		request.getSession().invalidate();
 		response.sendRedirect(request.getContextPath() + "/index.jsp");
 	}
+	//修改用户信息
+	protected void modifyUserInfo(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		//获取请求参数
+		User user = new User();
+		try {
+			//map转模型
+			BeanUtils.populate(user, request.getParameterMap());
+
+			//调用业务
+			UserService us = new UserService();
+			us.modifyUser(user);
+
+			//session失效
+			request.getSession().invalidate();
+
+			response.sendRedirect(request.getContextPath() + "/modifyUserInfoSuccess.jsp");
+			System.out.println(user);
+		} catch (Exception e) {
+			e.printStackTrace();
+			response.getWriter().print(e.getMessage());
+		}
+	}
+	//我的账户信息
+	protected void myacount(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		User user = (User) request.getSession().getAttribute("user");
+
+		if(user == null){
+			//未登录进行登录界面
+			response.sendRedirect(request.getContextPath() + "/login.jsp");
+		}else{
+			//进入我的帐号页面
+			request.getRequestDispatcher("/myAccount.jsp").forward(request, response);
+		}
+
+	}
+
 }

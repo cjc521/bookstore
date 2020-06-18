@@ -5,16 +5,12 @@
 <html>
 <head>
 <title>电子书城</title>
-<link rel="stylesheet" href="css/main.css" type="text/css" />
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/main.css" type="text/css" />
 </head>
 
 <body class="main">
-
 	<jsp:include page="head.jsp" />
-
 	<jsp:include page="menu_search.jsp" />
-
-
 	<div id="divpagecontent">
 		<table width="100%" border="0" cellspacing="0">
 			<tr>
@@ -24,7 +20,7 @@
 					</div>
 					<table cellspacing="0" class="infocontent">
 						<tr>
-							<td><img src="ad/page_ad.jpg" width="645" height="84" />
+							<td><img src="${pageContext.request.contextPath}/ad/page_ad.jpg" width="645" height="84" />
 
 								<table width="100%%" border="0" cellspacing="0">
 									<tr>
@@ -32,18 +28,18 @@
 
 											<div class="divbookcover">
 												<p>
-													<img src="${book.imgurl}"
+													<img src="${pageContext.request.contextPath}/${book.imgurl}"
 														width="213" height="269" border="0" />
 												</p>
 											</div>
 
 											<div style="text-align:center; margin-top:25px">
-												<a href="${pageContext.request.contextPath}/addCart?id=${book.id}">
-													<img src="images/buybutton.gif" border="0" /> 
+												<a href="${pageContext.request.contextPath}/order/addCart?id=${book.id}">
+													<img src="${pageContext.request.contextPath}/images/buybutton.gif" border="0" />
 												</a>
 											</div></td>
 										<td style="padding:20px 5px 5px 5px"><img
-											src="images/miniicon3.gif" width="16" height="13" /><font
+											src="${pageContext.request.contextPath}/images/miniicon3.gif" width="16" height="13" /><font
 											class="bookname">&nbsp;&nbsp;${book.name}</font>
 
 											<hr />售价：<font color="#FF0000">￥${book.price}</font>

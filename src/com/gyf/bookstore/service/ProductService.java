@@ -18,7 +18,7 @@ public class ProductService {
 			//2.获取总记录数
 			long totalCount = productDao.count(category);
 			//3.计算总页数
-			int totalPage = (int) Math.ceil(totalCount * 1.0 / pageCount) ;
+			int totalPage=(int) (totalCount%pageCount==0 ? totalCount/pageCount : (totalCount/pageCount)+1 ) ;
 			//4.查询数据库
 			List<Product> list = productDao.findBooks(currentPage, pageCount, category);
 			//5.设置PageResult
@@ -50,7 +50,7 @@ public class ProductService {
 		try {
 			PageResult<Product> pr = new PageResult<>();
 			long totalCount = productDao.countOfName(name);
-			int totalPage = (int) Math.ceil(totalCount * 1.0 / pageCount) ;
+			int totalPage=(int) (totalCount%pageCount==0 ? totalCount/pageCount : (totalCount/pageCount)+1 ) ;
 			List<Product> products = productDao.findBooksByName(currentPage, pageCount, name);
 
 			pr.setTotalCount(totalCount);
@@ -85,5 +85,41 @@ public class ProductService {
 		}
 		return count;
 	}
-
+	//多条件查询图书
+	public  PageResult<Product> findBookIf(String id, String category, String name, String minprice, String maxprice,int currentPage,int pageCount) {
+		try {
+			PageResult<Product> pr = new PageResult<>();
+			long totalCount = productDao.countOfManyConddition(id, category, name, minprice, maxprice);
+			int totalPage=(int) (totalCount%pageCount==0 ? totalCount/pageCount : (totalCount/pageCount)+1 ) ;
+			int start=(currentPage-1)*pageCount;
+			List<Product> products = productDao.searchIf(id, category, name, minprice, maxprice, start, pageCount);
+            pr.setTotalPage(totalPage);
+            pr.setTotalCount(totalCount);
+            pr.setPageCount(pageCount);
+            pr.setCurrentPage(currentPage);
+            pr.setList(products);
+            return pr;
+		}catch (SQLException e){
+			e.printStackTrace();
+		}
+		return null;
+	}
+   //id删除图书
+	public int deleteProduct(String id){
+		try {
+			return productDao.deleteProductById(id);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return 0;
+	}
+	//id修改图书
+	public int updateProduct(int id, String name, double price, String category, int pnum, String imgurl, String description){
+		try {
+			return productDao.updateProduct(id, name, price,category, pnum, imgurl, description);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return 0;
+	}
 }

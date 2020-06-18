@@ -71,7 +71,7 @@ public class Order {
 	}
 	@Override
 	public String toString() {
-		return "Order [id=" + id + ", money=" + money + ", receiverAddress=" + receiverAddress + ", receiverName="
+		return "OrderServlet [id=" + id + ", money=" + money + ", receiverAddress=" + receiverAddress + ", receiverName="
 				+ receiverName + ", receiverPhone=" + receiverPhone + ", paystate=" + paystate + ", ordertime="
 				+ ordertime + ", user=" + user + ", orderItems=" + orderItems + "]";
 	}
