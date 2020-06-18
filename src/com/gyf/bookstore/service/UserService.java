@@ -14,21 +14,17 @@ public class UserService {
 		try {
 			//保存到数据库
 			ud.add(user);
-			//发送激活邮件
+			/*//发送激活邮件
 			String activeLink = "http://localhost:8080/bookstore/active?activeCode=" + user.getActiveCode();
 			String html = "欢迎注册网上书城，请 <a href=\"" + activeLink+ "\">点击</a> 激活帐号";
-			//System.out.println("激活:" + html);
-			SendJMail.sendMail(user.getEmail(), html);
+			SendJMail.sendMail(user.getEmail(), html);*/
 		} catch (SQLException e) {
 			e.printStackTrace();
 			throw new UserException("注册失败");
 		}
 	}
 	
-	/**
-	 * 激活用户
-	 * @param activeCode 激活码
-	 */
+	 //激活用户
 	public void activeUser(String activeCode)throws UserException{
 		//1.查找是否有对应激活码的用户
 		try {
@@ -47,9 +43,7 @@ public class UserService {
 		}
 	}
 	
-	/**
-	 * 登录
-	 */
+	 // 登录
 	public User login(String username,String password)throws UserException{
 		
 		try {
@@ -69,12 +63,8 @@ public class UserService {
 		}
 	}
 
-	/**
-	 * 通过ID查找用户
-	 * @param id
-	 * @return
-	 * @throws UserException
-	 */
+	 //通过ID查找用户
+
 	public User findUserById(String id)throws UserException {
 		// TODO Auto-generated method stub
 		User user = null;

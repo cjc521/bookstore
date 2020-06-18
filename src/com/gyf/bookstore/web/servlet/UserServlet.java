@@ -55,9 +55,6 @@ public class UserServlet extends Base {
 		// 验证码
 		String checkcode = request.getParameter("checkcode");
 		String checkcode_session = (String) request.getSession().getAttribute("checkcode_session");
-		System.out.println(checkcode);
-		System.out.println(checkcode_session);
-		System.out.println("哈哈");
 		if (!checkcode_session.equals(checkcode)) {
 			request.setAttribute("ckcode_msg", "验证码不正确");
 			request.getRequestDispatcher("/register.jsp").forward(request, response);
@@ -69,7 +66,6 @@ public class UserServlet extends Base {
 		try {
 			// 把参数封装成Bean
 			BeanUtils.populate(user, request.getParameterMap());
-
 			// 设置一个激活码
 			user.setActiveCode(UUID.randomUUID().toString());
 			user.setRole("普通用户");
@@ -78,8 +74,8 @@ public class UserServlet extends Base {
 			UserService us = new UserService();
 			us.register(user);
 			// 注册成功跳转到成功界面
-			request.getRequestDispatcher("/registersuccess.jsp").forward(request, response);
-			System.out.println(user);
+//			request.getRequestDispatcher("/registersuccess.jsp").forward(request, response);
+			response.sendRedirect(request.getContextPath()+"/registersuccess.jsp");
 		} catch (UserException e) {
 			e.printStackTrace();
 			// 用户注册失败

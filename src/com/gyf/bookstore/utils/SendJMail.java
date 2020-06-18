@@ -10,15 +10,13 @@ import javax.mail.internet.MimeMessage;
 
 /**
  * 
- * @author gyf 2018-02-27
- * 
+ *
  * SMTP（Simple Mail Transfer Protocol）即简单邮件传输协议
  * 》SMTP 服务器就是遵循 SMTP 协议的发送邮件服务器
  * POP3是Post Office Protocol 3的简称，即邮局协议的第3个版本
  * 》POP3服务器则是遵循POP3协议的接收邮件服务器
  */
 public class SendJMail {
-	
 		public static boolean sendMail(String email, String emailMsg) {
 		
 		String from = "15989566325@163.com"; 				// 邮件发送人的邮件地址

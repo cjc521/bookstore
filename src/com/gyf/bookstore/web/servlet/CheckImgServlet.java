@@ -105,7 +105,6 @@ public class CheckImgServlet extends HttpServlet {
 		// 将验证码内容保存session
 		request.getSession().setAttribute("checkcode_session",word);
 		response.setContentType("charset=utf-8");
-		System.out.println(word);
 
 		// 步骤五 绘制干扰线
 		graphics.setColor(getRandColor(160, 200));

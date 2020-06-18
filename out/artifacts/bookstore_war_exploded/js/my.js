@@ -8,7 +8,7 @@ function changeSecond() {
 	svalue = svalue - 1;
 	if (svalue == 0) {
 		window.clearInterval(interval);
-		location.href = "http://localhost:8080/bookStore/index.jsp";
+		location.href ="http://localhost:8080/bookStore/index.jsp";
 		return;
 	}
 	second.innerHTML = svalue;

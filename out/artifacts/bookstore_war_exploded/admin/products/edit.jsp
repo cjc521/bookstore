@@ -9,11 +9,9 @@
 	src="${pageContext.request.contextPath}/admin/js/public.js"></script>
 <script language="javascript"
 	src="${pageContext.request.contextPath}/admin/js/check.js"></script>
-
 </HEAD>
 <body>
-	<form id="userAction_save_do" name="Form1"
-		action="#" method="post"
+	<form id="userAction_save_do" name="Form1" action="${pageContext.request.contextPath}/product/updateProduct" method="post"
 		enctype="multipart/form-data">
 	
 		<table cellSpacing="1" cellPadding="5" width="100%" align="center"
@@ -23,19 +21,19 @@
 					height="26"><strong><STRONG>编辑商品</STRONG> </strong></td>
 			</tr>
 
-
+            <tr><td><input name="id" value="${book.id}" type="hidden"></td></tr>
 			<tr>
 				<td align="center" bgColor="#f5fafe" class="ta_01">商品名称：</td>
 				<td class="ta_01" bgColor="#ffffff"><input type="text"
-					name="name" class="bg" value="xxx" /></td>
+					name="name" class="bg" value="${book.name}" /></td>
 				<td align="center" bgColor="#f5fafe" class="ta_01">商品价格：</td>
 				<td class="ta_01" bgColor="#ffffff"><input type="text"
-					name="price" class="bg" value="xxx" /></td>
+					name="price" class="bg" value="${book.price}" /></td>
 			</tr>
 			<tr>
 				<td align="center" bgColor="#f5fafe" class="ta_01">商品数量：</td>
 				<td class="ta_01" bgColor="#ffffff"><input type="text"
-					name="pnum" class="bg" value="xxx" /></td>
+					name="pnum" class="bg" value="${book.pnum}" /></td>
 				<td align="center" bgColor="#f5fafe" class="ta_01">商品类别：</td>
 				<td class="ta_01" bgColor="#ffffff"><select name="category"
 					id="category">
@@ -57,16 +55,15 @@
 				</select></td>
 			</tr>
 
-
 			<tr>
 				<td align="center" bgColor="#f5fafe" class="ta_01">商品图片：</td>
 				<td class="ta_01" bgColor="#ffffff" colSpan="3"><input
-					type="file" name="upload" size="30" value="" /></td>
+					type="file" name="imgurl" size="30" value="${book.imgurl}" /></td>
 			</tr>
 			<TR>
 				<TD class="ta_01" align="center" bgColor="#f5fafe">商品描述：</TD>
 				<TD class="ta_01" bgColor="#ffffff" colSpan="3"><textarea
-						name="description" cols="30" rows="3" style="WIDTH: 96%">${p.description}</textarea>
+						name="description" cols="30" rows="3" style="WIDTH: 96%">${book.description}</textarea>
 				</TD>
 			</TR>
 			<TR>
