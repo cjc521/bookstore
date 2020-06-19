@@ -64,7 +64,7 @@
 				<td align="center" bgColor="#f5fafe" class="ta_01">商品图片：</td>
 				<td class="ta_01" bgColor="#ffffff" colSpan="3">
 				<input
-					type="file" name="upload" size="30" value=""/>
+						type="file" name="upload" size="30" value=""/>
 				</td>
 			</tr>
 			<TR>

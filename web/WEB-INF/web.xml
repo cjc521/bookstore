@@ -4,7 +4,7 @@
   
   <filter>
   	<filter-name>myEncodingFilter</filter-name>
-  	<filter-class>com.gyf.bookstore.web.filter.MyEncodingFilter</filter-class>
+  	<filter-class>com.cjc.bookstore.web.filter.MyEncodingFilter</filter-class>
   </filter>
   
   <filter-mapping>
